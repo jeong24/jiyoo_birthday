@@ -61,29 +61,138 @@ document.addEventListener('DOMContentLoaded', () => {
         isPlaying = !isPlaying;
     });
 
-    // 3. Lightbox for Gallery (Placeholders)
-    const galleryItems = document.querySelectorAll('.gallery-item');
+    // 3. Image Gallery Injection & Carousel Logic
+    const gallerySlider = document.getElementById('gallery-slider');
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const closeBtn = document.querySelector('.close-btn');
 
-    galleryItems.forEach((item, index) => {
-        item.addEventListener('click', () => {
-            // Generates a funny placeholder image
-            const emojis = ['🤪', '😎', '💃', '👶✨'];
-            const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400"><rect width="400" height="400" fill="%23222"/><text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" font-size="80">${emojis[index%4]}</text><text x="50%" y="65%" dominant-baseline="middle" text-anchor="middle" font-size="25" fill="%23FFF" font-family="sans-serif">여기에 사진 추가!</text></svg>`;
+    const imageFiles = [
+        "KakaoTalk_Photo_2026-05-11-04-30-20 001.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-30-20 002.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-30-21 003.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-30-22 004.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-30-23 005.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-30-23 006.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-30-24 007.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-30-24 008.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-30-25 009.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-30-26 010.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-30-27 011.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-30-28 012.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-30-29 013.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-30-31 014.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-30-32 015.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-30-33 016.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-30-34 017.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-30-35 018.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-30-36 019.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-30-36 020.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-30-37 021.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-30-37 022.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-31-06 001.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-31-06 002.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-31-08 003.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-31-09 004.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-31-10 005.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-31-11 006.jpeg",
+        "KakaoTalk_Photo_2026-05-11-04-31-11 007.jpeg"
+    ];
+
+    let currentLightboxIndex = 0;
+    const lightboxPrev = document.querySelector('.lightbox-prev');
+    const lightboxNext = document.querySelector('.lightbox-next');
+
+    if (gallerySlider) {
+        imageFiles.forEach((filename, index) => {
+            const div = document.createElement('div');
+            div.className = 'gallery-item';
             
-            lightboxImg.src = 'data:image/svg+xml;utf8,' + svg;
-            lightbox.classList.add('active');
+            const img = document.createElement('img');
+            img.src = `./img/${filename}`;
+            img.alt = '지유 사진';
+            img.loading = 'lazy'; // Add lazy loading for performance
+            
+            div.appendChild(img);
+            gallerySlider.appendChild(div);
+            
+            // Re-bind Lightbox click
+            div.addEventListener('click', () => {
+                currentLightboxIndex = index;
+                updateLightboxImage();
+                lightbox.classList.add('active');
+            });
         });
-    });
+    }
+
+    function updateLightboxImage() {
+        lightboxImg.src = `./img/${imageFiles[currentLightboxIndex]}`;
+    }
+
+    if (lightboxPrev && lightboxNext) {
+        lightboxPrev.addEventListener('click', (e) => {
+            e.stopPropagation(); // prevent closing lightbox
+            currentLightboxIndex = (currentLightboxIndex - 1 + imageFiles.length) % imageFiles.length;
+            updateLightboxImage();
+        });
+
+        lightboxNext.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentLightboxIndex = (currentLightboxIndex + 1) % imageFiles.length;
+            updateLightboxImage();
+        });
+    }
+
+    // Swipe logic for lightbox
+    let touchstartX = 0;
+    let touchendX = 0;
+
+    if (lightbox) {
+        lightbox.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+        });
+
+        lightbox.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+    }
+
+    function handleSwipe() {
+        if (touchendX < touchstartX - 50) {
+            // swipe left -> next
+            currentLightboxIndex = (currentLightboxIndex + 1) % imageFiles.length;
+            updateLightboxImage();
+        }
+        if (touchendX > touchstartX + 50) {
+            // swipe right -> prev
+            currentLightboxIndex = (currentLightboxIndex - 1 + imageFiles.length) % imageFiles.length;
+            updateLightboxImage();
+        }
+    }
+
+    // 4. Carousel Navigation
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+
+    if (gallerySlider && prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', () => {
+            const scrollAmount = gallerySlider.clientWidth * 0.8;
+            gallerySlider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+
+        nextBtn.addEventListener('click', () => {
+            const scrollAmount = gallerySlider.clientWidth * 0.8;
+            gallerySlider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        });
+    }
 
     closeBtn.addEventListener('click', () => {
         lightbox.classList.remove('active');
     });
 
     lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) {
+        if (e.target === lightbox || e.target === document.querySelector('.lightbox-content')) {
             lightbox.classList.remove('active');
         }
     });

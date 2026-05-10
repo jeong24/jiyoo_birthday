@@ -13,14 +13,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="./css/style.css?v=3">
+    <link rel="stylesheet" href="./css/style.css?v=4">
 </head>
 <body>
     <!-- Background Video (Dancing Baby) -->
     <!-- 나중에 실제 춤추는 아기 영상으로 변경하세요! (playsinline은 모바일 자동재생 필수 속성) -->
     <div class="video-container">
         <video id="bg-video" autoplay loop muted playsinline>
-            <source src="./assets/video/dancing_baby_placeholder.mp4" type="video/mp4">
+            <source src="./img/background2.mp4" type="video/mp4">
         </video>
         <!-- 비디오가 로드되기 전이나 오류 시 보이는 그라데이션 오버레이 -->
         <div class="video-overlay"></div>
@@ -66,13 +66,13 @@
             <div class="glass-card reveal">
                 <h2 class="section-title">🎉 LEVEL UP 🎉</h2>
                 <div class="greeting-text">
-                    <p>2.3kg 로 태어난 작은천사 지유가</p>
+                    <p>1년 전 저희에게 온 작은 천사 지유가</p>
                     <p class="big-text"><strong>Lv.1 ( 첫돌 )</strong></p>
                     <p>를 달성하였습니다!! 🥳</p>
                     <br>
                     <p>육아라는 극한 퀘스트를 함께 깨주신</p>
                     <p>가족 및 최측근 파티원 분들을 모시고</p>
-                    <p>성대한 축하 파티를 열고자 합니다.</p>
+                    <p>축하 파티를 열고자 합니다.</p>
                     <br>
                     <p><strong>[ 드레스코드 ]</strong></p>
                     <p>지유랑 놀기에 편한 복장 👶👕</p>
@@ -90,11 +90,8 @@
         <section id="video" class="section">
             <div class="glass-card reveal">
                 <h2 class="section-title">📺 지유의 귀여운 순간들</h2>
-                <div class="video-placeholder">
-                    <div class="placeholder-text pulse">
-                        <span style="font-size: 3rem;">▶️</span>
-                        <span>성장/코믹 영상 들어갈 자리</span>
-                    </div>
+                <div style="width: 100%; border-radius: 15px; overflow: hidden; border: 2px solid var(--color-secondary); box-shadow: 0 0 20px rgba(79, 172, 254, 0.3);">
+                    <video src="./img/KakaoTalk_Video_2026-05-11-04-30-48.mp4" controls playsinline style="width: 100%; display: block;"></video>
                 </div>
             </div>
         </section>
@@ -104,12 +101,12 @@
             <div class="glass-card reveal">
                 <h2 class="section-title">📸 지유 갤러리</h2>
                 <p class="sub-desc">지유의 치명적인 매력 발산 타임</p>
-                <div class="gallery-grid">
-                    <!-- Photo Placeholders -->
-                    <div class="gallery-item placeholder tilt-left"><span class="txt">사진 1</span></div>
-                    <div class="gallery-item placeholder tilt-right"><span class="txt">사진 2</span></div>
-                    <div class="gallery-item placeholder tilt-left"><span class="txt">사진 3</span></div>
-                    <div class="gallery-item placeholder tilt-right"><span class="txt">사진 4</span></div>
+                <div class="carousel-container">
+                    <button class="carousel-btn prev-btn" aria-label="이전 사진">❮</button>
+                    <div class="gallery-slider" id="gallery-slider">
+                        <!-- Images will be injected by JS -->
+                    </div>
+                    <button class="carousel-btn next-btn" aria-label="다음 사진">❯</button>
                 </div>
             </div>
         </section>
@@ -147,6 +144,8 @@
     <!-- Lightbox (Modal) for Gallery -->
     <div id="lightbox" class="lightbox">
         <span class="close-btn">&times;</span>
+        <button class="lightbox-nav lightbox-prev">❮</button>
+        <button class="lightbox-nav lightbox-next">❯</button>
         <div class="lightbox-content">
             <img id="lightbox-img" src="" alt="확대된 사진">
         </div>
