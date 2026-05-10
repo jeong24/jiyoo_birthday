@@ -88,7 +88,43 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 4. Canvas Confetti Animation (Party Vibe)
+    // 5. Copy to Clipboard Logic
+    const copyBtns = document.querySelectorAll('.copy-btn');
+    const toast = document.getElementById('toast');
+    let toastTimeout;
+
+    if (copyBtns.length > 0 && toast) {
+        copyBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.getAttribute('data-clipboard-target');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    const textToCopy = targetElement.innerText;
+                    
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        showToast('주소가 복사되었습니다! 📋');
+                    }).catch(err => {
+                        console.error('Failed to copy text: ', err);
+                        showToast('복사에 실패했습니다.');
+                    });
+                }
+            });
+        });
+    }
+
+    function showToast(message) {
+        if (!toast) return;
+        toast.innerText = message;
+        toast.classList.add('show');
+        
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+            toast.classList.remove('show');
+        }, 2500);
+    }
+
+    // 6. Canvas Confetti Animation (Party Vibe)
     initConfetti();
 });
 

@@ -425,3 +425,80 @@ body {
     color: white; font-size: 40px; cursor: pointer;
     font-family: var(--font-title);
 }
+
+/* =========================================
+   Location Additional Elements
+========================================= */
+.address-wrapper {
+    margin-bottom: 15px;
+}
+.address-wrapper p {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+.copy-btn {
+    padding: 8px 16px;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(255, 51, 102, 0.4);
+    font-family: var(--font-body);
+    transition: transform 0.2s;
+}
+.copy-btn:active {
+    transform: scale(0.95);
+}
+.map-container {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+.navi-buttons {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+}
+.navi-btn.kakao-navi {
+    display: inline-block;
+    width: 100%;
+    padding: 12px 20px;
+    background: #FEE500;
+    color: #000000;
+    text-decoration: none;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(254, 229, 0, 0.4);
+    transition: transform 0.2s;
+}
+.navi-btn.kakao-navi:active {
+    transform: scale(0.95);
+}
+
+/* =========================================
+   Toast Notification
+========================================= */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background-color: rgba(255, 51, 102, 0.9);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    z-index: 2000;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
