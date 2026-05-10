@@ -1,0 +1,427 @@
+/* =========================================
+   CSS Variables & Reset (Party Theme)
+========================================= */
+:root {
+    --color-primary: #FF3366; /* Neon Pink */
+    --color-secondary: #00E5FF; /* Neon Cyan */
+    --color-accent: #FFD700; /* Gold/Yellow */
+    --color-text-main: #FFFFFF;
+    --font-title: 'Jua', sans-serif;
+    --font-body: 'Noto Sans KR', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-text-main);
+    background-color: #111; /* Fallback */
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+/* =========================================
+   Background Video Setup
+========================================= */
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    overflow: hidden;
+    background: linear-gradient(45deg, #FF3366, #9D00FF, #00E5FF);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+#bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translateX(-50%) translateY(-50%);
+    object-fit: cover;
+    opacity: 0.6; /* 텍스트 가독성을 위해 불투명도 조절 */
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* 다크 오버레이 */
+    z-index: -1;
+}
+
+#particleCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* =========================================
+   Mobile Container & Glassmorphism
+========================================= */
+.mobile-container {
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.section {
+    padding: 60px 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.glass-card {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 40px 24px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    text-align: center;
+}
+
+.section-title {
+    font-family: var(--font-title);
+    font-size: 2rem;
+    color: var(--color-accent);
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    letter-spacing: 2px;
+}
+
+/* =========================================
+   Floating Music Button (Disco Ball)
+========================================= */
+.floating-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid var(--color-secondary);
+    box-shadow: 0 0 15px var(--color-secondary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.floating-btn.playing .disc {
+    animation: spin 3s linear infinite;
+    display: inline-block;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+@media (min-width: 481px) {
+    .floating-btn {
+        right: calc(50% - 240px + 20px);
+    }
+}
+
+/* =========================================
+   Intro Section
+========================================= */
+#intro {
+    min-height: 100vh;
+    justify-content: center;
+    padding-top: 80px;
+}
+
+.badge {
+    display: inline-block;
+    background: var(--color-accent);
+    color: #000;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+}
+
+.title {
+    font-family: var(--font-title);
+    font-size: 3.5rem;
+    line-height: 1.3;
+    margin-bottom: 30px;
+    color: #FFF;
+    text-shadow: 
+        2px 2px 0 var(--color-primary),
+        -1px -1px 0 var(--color-secondary),  
+        2px 2px 10px rgba(0,0,0,0.8);
+    transform: rotate(-3deg);
+}
+
+.warning-box {
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px dashed var(--color-primary);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.warning-box p {
+    color: #FFF;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.warning-box strong {
+    color: var(--color-primary);
+    font-size: 1.2rem;
+}
+
+.date-location {
+    font-size: 1.3rem;
+}
+
+.highlight {
+    background: var(--color-secondary);
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* =========================================
+   Greeting Section
+========================================= */
+.greeting-text {
+    font-size: 1.2rem;
+    line-height: 2;
+    margin-bottom: 30px;
+}
+
+.big-text {
+    font-family: var(--font-title);
+    font-size: 2rem;
+    color: var(--color-secondary);
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    margin: 10px 0;
+    transform: scale(1.1);
+    display: inline-block;
+}
+
+.parents-info {
+    background: rgba(255, 51, 102, 0.3);
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid var(--color-primary);
+    font-size: 1.1rem;
+}
+
+/* =========================================
+   Video & Gallery
+========================================= */
+.sub-desc {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: #EEE;
+}
+
+.video-placeholder {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: rgba(0,0,0,0.6);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--color-secondary);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.gallery-item {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #FFF;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.tilt-left { transform: rotate(-5deg); }
+.tilt-right { transform: rotate(5deg); }
+.gallery-item:active { transform: scale(0.95); }
+
+/* =========================================
+   Location & Footer
+========================================= */
+.gradient-text {
+    background: linear-gradient(45deg, var(--color-accent), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.venue-info p {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.map-placeholder {
+    width: 100%;
+    height: 200px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 15px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--color-accent);
+}
+
+.footer {
+    padding: 40px 20px 80px;
+    text-align: center;
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+/* =========================================
+   Animations
+========================================= */
+.bounce {
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-15px); }
+    60% { transform: translateY(-7px); }
+}
+
+.wiggle {
+    animation: wiggle 3s infinite;
+}
+
+@keyframes wiggle {
+    0% { transform: rotate(0deg); }
+    10% { transform: rotate(-2deg); }
+    20% { transform: rotate(2deg); }
+    30% { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.pulse {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.bounce-vertical {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounceUp 2s infinite;
+    font-size: 1.2rem;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+}
+
+@keyframes bounceUp {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(10px); }
+}
+
+/* Scroll Reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(60px) scale(0.9);
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* =========================================
+   Lightbox Modal
+========================================= */
+.lightbox {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.9);
+    z-index: 1000;
+    display: flex; justify-content: center; align-items: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+    opacity: 1; pointer-events: auto;
+}
+
+.lightbox-content img {
+    max-width: 90vw; max-height: 80vh;
+    border-radius: 10px;
+    border: 3px solid var(--color-primary);
+}
+
+.close-btn {
+    position: absolute; top: 20px; right: 30px;
+    color: white; font-size: 40px; cursor: pointer;
+    font-family: var(--font-title);
+}

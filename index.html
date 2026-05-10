@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🚨 VIP 전용: 지유의 첫 번째 파티 🚨</title>
+    
+    <meta name="description" content="가족 및 최측근 프라이빗 돌잔치 파티에 초대합니다.">
+    
+    <!-- Playful & Clean Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <!-- Background Video (Dancing Baby) -->
+    <!-- 나중에 실제 춤추는 아기 영상으로 변경하세요! (playsinline은 모바일 자동재생 필수 속성) -->
+    <div class="video-container">
+        <video id="bg-video" autoplay loop muted playsinline>
+            <source src="./assets/video/dancing_baby_placeholder.mp4" type="video/mp4">
+        </video>
+        <!-- 비디오가 로드되기 전이나 오류 시 보이는 그라데이션 오버레이 -->
+        <div class="video-overlay"></div>
+    </div>
+
+    <!-- Canvas for Confetti Animation -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Background Music Control (Upbeat Party Music) -->
+    <button id="musicBtn" class="floating-btn music-btn pulse">
+        <span class="disc">🪩</span>
+        <audio id="bgMusic" loop>
+            <source src="./assets/audio/party_music.mp3" type="audio/mpeg">
+        </audio>
+    </button>
+
+    <div class="mobile-container">
+        
+        <!-- Intro Section -->
+        <header id="intro" class="section">
+            <div class="glass-card intro-card reveal">
+                <div class="badge bounce">✨ VIP ONLY ✨</div>
+                <h1 class="title type-effect">지유의<br>돌잔치 클럽</h1>
+                
+                <div class="warning-box wiggle">
+                    <p>⚠️ <strong>경고</strong> ⚠️</p>
+                    <p>가족 및 최측근 프라이빗 파티입니다.<br>외부인 무단 침입 시,<br><strong>아기상어 무한 반복 청취 형</strong>에 처합니다.</p>
+                </div>
+
+                <div class="date-location">
+                    <p class="highlight">2026년 6월 14일(일) 오전 11시</p>
+                    <p>송도 더비앙 E2홀</p>
+                </div>
+            </div>
+            
+            <div class="scroll-indicator bounce-vertical">
+                <span>👇 스크롤해서 입장하기 👇</span>
+            </div>
+        </header>
+
+        <!-- Greeting Section -->
+        <section id="greeting" class="section">
+            <div class="glass-card reveal">
+                <h2 class="section-title">🎉 LEVEL UP 🎉</h2>
+                <div class="greeting-text">
+                    <p>응애응애 울던 지유가 드디어</p>
+                    <p class="big-text"><strong>Lv.1 ( 첫돌 )</strong></p>
+                    <p>를 달성했습니다!! 🥳</p>
+                    <br>
+                    <p>육아라는 극한 퀘스트를 함께 깨주신</p>
+                    <p>가족 및 최측근 파티원 분들을 모시고</p>
+                    <p>성대한 축하 파티를 열고자 합니다.</p>
+                    <br>
+                    <p><strong>[ 드레스코드 ]</strong></p>
+                    <p>지유랑 같이 춤추기 편한 복장 💃🕺</p>
+                    <br>
+                    <p><strong>[ 준비물 ]</strong></p>
+                    <p>터질듯한 박수와 주체할 수 없는 텐션 👏</p>
+                </div>
+                <div class="parents-info">
+                    <p>파티 주최자: 아빠 <strong>정현섭</strong> / 엄마 <strong>백승혜</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Section (Highlight Reel) -->
+        <section id="video" class="section">
+            <div class="glass-card reveal">
+                <h2 class="section-title">📺 지유의 귀여운 순간들</h2>
+                <div class="video-placeholder">
+                    <div class="placeholder-text pulse">
+                        <span style="font-size: 3rem;">▶️</span>
+                        <span>성장/코믹 영상 들어갈 자리</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="section">
+            <div class="glass-card reveal">
+                <h2 class="section-title">📸 지유 갤러리</h2>
+                <p class="sub-desc">지유의 치명적인 매력 발산 타임</p>
+                <div class="gallery-grid">
+                    <!-- Photo Placeholders -->
+                    <div class="gallery-item placeholder tilt-left"><span class="txt">사진 1</span></div>
+                    <div class="gallery-item placeholder tilt-right"><span class="txt">사진 2</span></div>
+                    <div class="gallery-item placeholder tilt-left"><span class="txt">사진 3</span></div>
+                    <div class="gallery-item placeholder tilt-right"><span class="txt">사진 4</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location Section -->
+        <section id="location" class="section">
+            <div class="glass-card reveal">
+                <h2 class="section-title">🗺️ 파티장 오시는 길</h2>
+                <div class="venue-info">
+                    <h3 class="gradient-text">송도 더비앙 E2홀</h3>
+                    <p>인천광역시 연수구 송도과학로16번길 33-1<br>트리플 스트리트 A동 별관 1층</p>
+                    <p class="tel">☎️ +82 32-815-7777</p>
+                </div>
+                
+                <div class="map-placeholder bounce">
+                    <div class="placeholder-text">
+                        <span style="font-size: 2rem;">🗺️</span>
+                        <span>(지도 연동) 지각하면 아기상어 무한반복청취형</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>DJ Jiyoo's 1st Birthday Party 🎧</p>
+            <p>※ 주의: 파티 후유증으로 근육통이 올 수 있습니다.</p>
+        </footer>
+    </div>
+
+    <!-- Lightbox (Modal) for Gallery -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="확대된 사진">
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./js/main.js"></script>
+</body>
+</html>
