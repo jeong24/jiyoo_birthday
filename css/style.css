@@ -2,10 +2,10 @@
    CSS Variables & Reset (Party Theme)
 ========================================= */
 :root {
-    --color-primary: #FF5A79; /* Softer Neon Pink */
-    --color-secondary: #00D2FF; /* Softer Neon Cyan */
-    --color-accent: #FFD700; /* Gold/Yellow */
-    --color-text-main: #FFFFFF;
+    --color-primary: #FF758C; /* Cheerful Pink */
+    --color-secondary: #4facfe; /* Sky Blue */
+    --color-accent: #FFA751; /* Orange/Yellow */
+    --color-text-main: #4A4A4A; /* Dark Grey */
     --font-title: 'Jua', sans-serif;
     --font-body: 'Noto Sans KR', sans-serif;
 }
@@ -36,7 +36,7 @@ body {
     height: 100vh;
     z-index: -2;
     overflow: hidden;
-    background: linear-gradient(45deg, #141E30, #243B55);
+    background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
     background-size: 200% 200%;
     animation: gradientBG 10s ease infinite;
 }
@@ -66,7 +66,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* 다크 오버레이 */
+    background: rgba(255, 255, 255, 0.4); /* Light overlay */
     z-index: -1;
 }
 
@@ -102,13 +102,13 @@ body {
 
 .glass-card {
     width: 100%;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.65);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.9);
     padding: 40px 24px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
     text-align: center;
 }
 
@@ -132,14 +132,15 @@ body {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(255, 255, 255, 0.8);
     border: 2px solid var(--color-secondary);
-    box-shadow: 0 0 15px var(--color-secondary);
+    box-shadow: 0 0 15px rgba(79, 172, 254, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     font-size: 1.5rem;
+    color: #333;
     transition: all 0.3s ease;
 }
 
@@ -184,16 +185,16 @@ body {
     font-size: 3.5rem;
     line-height: 1.3;
     margin-bottom: 30px;
-    color: #FFF;
+    color: var(--color-primary);
     text-shadow: 
-        2px 2px 0 var(--color-primary),
-        -1px -1px 0 var(--color-secondary),  
-        2px 2px 10px rgba(0,0,0,0.8);
+        2px 2px 0 #FFF,
+        -1px -1px 0 #FFF,  
+        2px 2px 8px rgba(255, 117, 140, 0.4);
     transform: rotate(-3deg);
 }
 
 .warning-box {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(255, 255, 255, 0.9);
     border: 2px dashed var(--color-primary);
     padding: 20px;
     border-radius: 15px;
@@ -201,7 +202,7 @@ body {
 }
 
 .warning-box p {
-    color: #FFF;
+    color: var(--color-text-main);
     font-size: 1.1rem;
     line-height: 1.5;
 }
@@ -238,14 +239,14 @@ body {
     font-family: var(--font-title);
     font-size: 2rem;
     color: var(--color-secondary);
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     margin: 10px 0;
     transform: scale(1.1);
     display: inline-block;
 }
 
 .parents-info {
-    background: rgba(255, 51, 102, 0.3);
+    background: rgba(255, 255, 255, 0.8);
     padding: 15px;
     border-radius: 15px;
     border: 1px solid var(--color-primary);
@@ -258,19 +259,19 @@ body {
 .sub-desc {
     margin-bottom: 20px;
     font-size: 1.1rem;
-    color: #EEE;
+    color: #666;
 }
 
 .video-placeholder {
     width: 100%;
     aspect-ratio: 16/9;
-    background: rgba(0,0,0,0.6);
+    background: rgba(255,255,255,0.8);
     border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 2px solid var(--color-secondary);
-    box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+    box-shadow: 0 0 20px rgba(79, 172, 254, 0.3);
 }
 
 .gallery-grid {
@@ -283,11 +284,11 @@ body {
     width: 100%;
     aspect-ratio: 1/1;
     border-radius: 15px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.8);
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px dashed #FFF;
+    border: 2px dashed var(--color-primary);
     font-size: 1.2rem;
     cursor: pointer;
     transition: transform 0.2s;
@@ -302,6 +303,7 @@ body {
 ========================================= */
 .gradient-text {
     background: linear-gradient(45deg, var(--color-accent), var(--color-secondary));
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: var(--font-title);
@@ -317,7 +319,7 @@ body {
 .map-placeholder {
     width: 100%;
     height: 200px;
-    background: rgba(0,0,0,0.5);
+    background: rgba(255,255,255,0.8);
     border-radius: 15px;
     margin-top: 20px;
     display: flex;
@@ -331,6 +333,7 @@ body {
     text-align: center;
     font-size: 1.1rem;
     opacity: 0.8;
+    color: #4A4A4A;
 }
 
 /* =========================================
