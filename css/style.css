@@ -224,6 +224,26 @@ body {
     font-weight: bold;
 }
 
+.calendar-btn {
+    display: inline-block;
+    background: #4facfe; /* secondary color */
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(79, 172, 254, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-family: var(--font-body);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.calendar-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 5px rgba(79, 172, 254, 0.4);
+}
+
 /* =========================================
    Greeting Section
 ========================================= */
