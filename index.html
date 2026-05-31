@@ -1446,26 +1446,19 @@
             if (dotCount >= TOTAL_DOTS) {
               clearInterval(dotTimer);
 
-              // 도트 완료 → Build complete.
+              // 도트 완료 → 곧바로 Build complete 및 메시지 출력
               setTimeout(function() {
                 buildDiv.innerHTML = '  <span class="build-success">Build complete.</span>';
-
-                // 빈 줄
-                setTimeout(function() { addLine(''); }, 300);
-
-                // 초대 메시지 (여유있게)
-                setTimeout(function() {
-                  addLine('  <span class="invite-msg">지유의 첫 번째 생일에 초대합니다.</span><span class="cursor-blink"></span>');
-                }, 1800);
-
-              }, 300);
+                addLine('');
+                addLine('  <span class="invite-msg">지유의 첫 번째 생일에 초대합니다.</span><span class="cursor-blink"></span>');
+              }, 100);
             }
           }, DOT_INTERVAL);
 
         }, DOTS_START);
 
-        // 자동 전환 타이밍
-        var AUTO_TRANSITION = DOTS_START + (TOTAL_DOTS * DOT_INTERVAL) + 2500;
+        // 자동 전환: 메시지가 뜨고 약 1초 뒤에 전환
+        var AUTO_TRANSITION = DOTS_START + (TOTAL_DOTS * DOT_INTERVAL) + 1100;
         setTimeout(function() {
           intro.classList.add('fade-out');
           mainContent.classList.add('visible');
