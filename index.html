@@ -28,7 +28,7 @@
     body {
       font-family: 'Noto Sans KR', -apple-system, sans-serif;
       background: #0f111a;
-      background: linear-gradient(160deg, #0f111a 0%, #1a1030 25%, #0d1b2a 50%, #1c1235 75%, #0f1922 100%);
+      background: linear-gradient(160deg, #1a0f1e 0%, #2d1525 25%, #1a1030 50%, #0f1a2a 75%, #1e0f1a 100%);
       background-attachment: fixed;
       color: #ccd6f6;
       overflow-x: hidden;
@@ -41,10 +41,10 @@
        DESIGN TOKENS
     ═══════════════════════════════════════════ */
     :root {
-      --bg-primary: #0f111a;
-      --bg-card: #1a1e2e;
-      --bg-surface: #232738;
-      --bg-terminal: #0a0e17;
+      --bg-primary: #1a0f1e;
+      --bg-card: #241528;
+      --bg-surface: #2e1a35;
+      --bg-terminal: #0a0610;
 
       --cyan: #64ffda;
       --green: #00e676;
@@ -989,57 +989,57 @@
     }
 
     .bokeh-circle.b1 {
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(232, 160, 191, 0.18) 0%, transparent 70%);
+      width: 340px; height: 340px;
+      background: radial-gradient(circle, rgba(232, 140, 180, 0.38) 0%, transparent 70%);
       top: 10%; left: -5%;
       animation-duration: 25s;
       animation-delay: 0s;
     }
     .bokeh-circle.b2 {
-      width: 250px; height: 250px;
-      background: radial-gradient(circle, rgba(212, 165, 116, 0.15) 0%, transparent 70%);
+      width: 280px; height: 280px;
+      background: radial-gradient(circle, rgba(212, 155, 100, 0.32) 0%, transparent 70%);
       top: 30%; right: -10%;
       animation-duration: 30s;
       animation-delay: 2s;
     }
     .bokeh-circle.b3 {
-      width: 200px; height: 200px;
-      background: radial-gradient(circle, rgba(100, 255, 218, 0.08) 0%, transparent 70%);
+      width: 220px; height: 220px;
+      background: radial-gradient(circle, rgba(240, 180, 210, 0.22) 0%, transparent 70%);
       top: 55%; left: 10%;
       animation-duration: 22s;
       animation-delay: 4s;
     }
     .bokeh-circle.b4 {
-      width: 350px; height: 350px;
-      background: radial-gradient(circle, rgba(199, 146, 234, 0.12) 0%, transparent 70%);
+      width: 380px; height: 380px;
+      background: radial-gradient(circle, rgba(210, 130, 170, 0.28) 0%, transparent 70%);
       top: 70%; right: -5%;
       animation-duration: 28s;
       animation-delay: 1s;
     }
     .bokeh-circle.b5 {
-      width: 180px; height: 180px;
-      background: radial-gradient(circle, rgba(232, 160, 191, 0.14) 0%, transparent 70%);
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(230, 160, 100, 0.30) 0%, transparent 70%);
       top: 85%; left: 30%;
       animation-duration: 20s;
       animation-delay: 3s;
     }
     .bokeh-circle.b6 {
-      width: 260px; height: 260px;
-      background: radial-gradient(circle, rgba(130, 170, 255, 0.1) 0%, transparent 70%);
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(232, 140, 180, 0.25) 0%, transparent 70%);
       top: 5%; right: 20%;
       animation-duration: 32s;
       animation-delay: 5s;
     }
     .bokeh-circle.b7 {
-      width: 220px; height: 220px;
-      background: radial-gradient(circle, rgba(212, 165, 116, 0.12) 0%, transparent 70%);
+      width: 250px; height: 250px;
+      background: radial-gradient(circle, rgba(220, 160, 100, 0.28) 0%, transparent 70%);
       top: 45%; left: -8%;
       animation-duration: 26s;
       animation-delay: 6s;
     }
     .bokeh-circle.b8 {
-      width: 280px; height: 280px;
-      background: radial-gradient(circle, rgba(199, 146, 234, 0.1) 0%, transparent 70%);
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(240, 160, 190, 0.22) 0%, transparent 70%);
       top: 20%; left: 50%;
       animation-duration: 35s;
       animation-delay: 2s;
@@ -1398,15 +1398,12 @@
       'use strict';
 
       /* ─── TERMINAL TYPING ANIMATION ─── */
-      const terminalLines = [
-        { text: '<span class="prompt">$</span> <span class="cmd">지유-돌잔치 시작 v1.0.0</span>', delay: 0 },
-        { text: '<span class="prompt">$</span> <span class="cmd">사랑 모듈 불러오는 중............</span> <span class="ok">[완료]</span>', delay: 700 },
-        { text: '<span class="prompt">$</span> <span class="cmd">미소 모듈 불러오는 중............</span> <span class="ok">[완료]</span>', delay: 1400 },
-        { text: '<span class="prompt">$</span> <span class="cmd">행복 지수 측정 중.................</span> <span class="ok">[최대]</span>', delay: 2100 },
-        { text: '<span class="prompt">$</span> <span class="cmd">초대장 생성 중....................</span> <span class="ok">[완료]</span>', delay: 2800 },
-        { text: '', delay: 3400 },
-        { text: '<span class="prompt">$</span> <span class="build-success">빌드 성공.</span>', delay: 3600 },
-        { text: '<span class="prompt">$</span> <span class="invite-msg">지유의 첫 번째 생일에 초대합니다.</span><span class="cursor-blink"></span>', delay: 4100 },
+      const fastLines = [
+        { html: '<span class="prompt">$</span> <span class="cmd">지유-돌잔치 시작...............</span> <span class="ok">[v1.0.0]</span>', delay: 0 },
+        { html: '<span class="prompt">$</span> <span class="cmd">사랑 모듈 불러오는 중..........</span> <span class="ok">[OK]</span>', delay: 350 },
+        { html: '<span class="prompt">$</span> <span class="cmd">미소 모듈 불러오는 중..........</span> <span class="ok">[OK]</span>', delay: 700 },
+        { html: '<span class="prompt">$</span> <span class="cmd">행복 지수 측정 중................</span> <span class="ok">[MAX]</span>', delay: 1050 },
+        { html: '<span class="prompt">$</span> <span class="cmd">초대장 컴파일 중.................</span> <span class="ok">[OK]</span>', delay: 1400 },
       ];
 
       const terminalBody = document.getElementById('terminalBody');
@@ -1414,29 +1411,65 @@
       const mainContent = document.getElementById('main-content');
       const heroContent = document.getElementById('heroContent');
 
+      function addLine(html) {
+        const div = document.createElement('div');
+        div.className = 'terminal-line visible';
+        div.innerHTML = html;
+        terminalBody.appendChild(div);
+        return div;
+      }
+
       function startTerminalAnimation() {
-        terminalLines.forEach((line, index) => {
-          setTimeout(() => {
-            const div = document.createElement('div');
-            div.className = 'terminal-line visible';
-            div.innerHTML = line.text;
-            terminalBody.appendChild(div);
-          }, line.delay);
+        // 1단계: 빠른 라인들 (350ms 간격)
+        fastLines.forEach(function(line) {
+          setTimeout(function() { addLine(line.html); }, line.delay);
         });
 
-        // Auto-transition after 5.5 seconds
-        setTimeout(() => {
+        // 2단계: 빈 줄 + Building 도트 애니메이션 시작
+        var DOTS_START = 1750;
+        var TOTAL_DOTS = 22;
+        var DOT_INTERVAL = 75; // 점 하나당 75ms → 총 약 1.65초
+
+        setTimeout(function() {
+          addLine('');
+
+          var buildDiv = addLine('  <span class="build-success">Building</span><span id="buildDots" style="color:#00e676"></span>');
+          var dotsSpan = buildDiv.querySelector('#buildDots');
+          var dotCount = 0;
+
+          var dotTimer = setInterval(function() {
+            dotCount++;
+            dotsSpan.textContent += '.';
+
+            if (dotCount >= TOTAL_DOTS) {
+              clearInterval(dotTimer);
+
+              // 도트 완료 → Build complete.
+              setTimeout(function() {
+                buildDiv.innerHTML = '  <span class="build-success">Build complete.</span>';
+
+                // 빈 줄
+                setTimeout(function() { addLine(''); }, 300);
+
+                // 초대 메시지 (여유있게)
+                setTimeout(function() {
+                  addLine('  <span class="invite-msg">지유의 첫 번째 생일에 초대합니다.</span><span class="cursor-blink"></span>');
+                }, 1800);
+
+              }, 300);
+            }
+          }, DOT_INTERVAL);
+
+        }, DOTS_START);
+
+        // 자동 전환 타이밍
+        var AUTO_TRANSITION = DOTS_START + (TOTAL_DOTS * DOT_INTERVAL) + 2500;
+        setTimeout(function() {
           intro.classList.add('fade-out');
           mainContent.classList.add('visible');
-
-          setTimeout(() => {
-            heroContent.classList.add('active');
-          }, 400);
-
-          setTimeout(() => {
-            intro.style.display = 'none';
-          }, 900);
-        }, 5500);
+          setTimeout(function() { heroContent.classList.add('active'); }, 400);
+          setTimeout(function() { intro.style.display = 'none'; }, 900);
+        }, AUTO_TRANSITION);
       }
 
       // Start on load
