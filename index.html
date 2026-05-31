@@ -139,8 +139,8 @@
     .terminal-line {
       opacity: 0;
       white-space: pre-wrap;
-      word-break: break-all;
-      overflow-wrap: break-word;
+      word-break: keep-all;
+      overflow-wrap: anywhere;
     }
 
     .terminal-line.visible {
@@ -487,7 +487,9 @@
     }
 
     .line-content {
-      white-space: nowrap;
+      white-space: pre-wrap;
+      word-break: keep-all;
+      overflow-wrap: anywhere;
       flex: 1;
       min-width: 0;
     }
@@ -1341,7 +1343,7 @@
 
         <div class="map-container reveal">
           <iframe
-            src="https://www.google.com/maps?q=%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C+%EC%97%B0%EC%88%98%EA%B5%AC+%EC%86%A1%EB%8F%84%EA%B3%BC%ED%95%99%EB%A1%9C16%EB%B2%88%EA%B8%B8+33-1&z=16&output=embed"
+            src="https://maps.google.com/maps?q=%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C+%EC%97%B0%EC%88%98%EA%B5%AC+%EC%86%A1%EB%8F%84%EA%B3%BC%ED%95%99%EB%A1%9C16%EB%B2%88%EA%B8%B8+33-1&t=&z=16&ie=UTF8&iwloc=&output=embed"
             allowfullscreen
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
